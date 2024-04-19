@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #36393f; /* Discord dark background color */
+            color: white; /* Text color */
+        }
+
+        .container {
+            margin-top: 5rem;
+        }
+
+        .card {
+            background-color: #202225; /* Discord darker background color */
+        }
+
+        .card-title {
+            color: white; /* Card title text color */
+        }
+
+        .form-label,
+        .form-control {
+            color: white; /* Form label and input text color */
+        }
+
+        .btn-primary {
+            background-color: #7289da; /* Discord primary button color */
+            border-color: #7289da; /* Discord primary button border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #677bc4; /* Discord primary button hover color */
+            border-color: #677bc4; /* Discord primary button hover border color */
+        }
+
+        .btn-link {
+            color: #7289da; /* Discord link color */
+        }
+
+        .btn-link:hover {
+            color: #677bc4; /* Discord link hover color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Login</h4>
+                        <form>
+                            <div class="mb-3">
+                                <label for="inputEmail" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email address" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputPassword" class="form-label">Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="inputPassword" placeholder="Enter your password" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">Show</button>
+                                </div>
+                            </div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <a href="#" class="btn btn-link">Forgot password?</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle password visibility
+        document.getElementById("showPasswordBtn").addEventListener("click", function() {
+            var passwordInput = document.getElementById("inputPassword");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                this.textContent = "Hide";
+            } else {
+                passwordInput.type = "password";
+                this.textContent = "Show";
+            }
+        });
+    
+        // Check if "Remember Me" checkbox is checked and store credentials
+        document.querySelector("#rememberMe").addEventListener("change", function() {
+            var emailInput = document.getElementById("inputEmail");
+            var passwordInput = document.getElementById("inputPassword");
+            if (this.checked) {
+                localStorage.setItem("rememberedEmail", emailInput.value);
+                localStorage.setItem("rememberedPassword", passwordInput.value);
+            } else {
+                localStorage.removeItem("rememberedEmail");
+                localStorage.removeItem("rememberedPassword");
+            }
+        });
+    
+        // Populate fields with remembered credentials when page loads
+        window.addEventListener("load", function() {
+            var rememberedEmail = localStorage.getItem("rememberedEmail");
+            var rememberedPassword = localStorage.getItem("rememberedPassword");
+            if (rememberedEmail && rememberedPassword) {
+                document.getElementById("inputEmail").value = rememberedEmail;
+                document.getElementById("inputPassword").value = rememberedPassword;
+                document.getElementById("rememberMe").checked = true;
+            }
+        });
+        </script>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+

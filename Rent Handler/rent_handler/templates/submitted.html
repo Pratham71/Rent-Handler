@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submitted</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <style>
+        body{
+            background-image: url("https://assets-global.website-files.com/5e261bc81db8f19fa664899d/64add0eb758ddc8d390ed4a0_out-0.png");
+            background-color: black;
+            color: white;
+        }
+
+        .card{
+            background-color: white;
+        }
+        
+        .card-title{
+            color: black;
+        }
+
+        .card-text{
+            color: black;
+        }
+
+        .btn-primary {
+            background-color: #7289da; /* Discord primary button color */
+            border-color: #7289da; /* Discord primary button border color */
+        }
+
+        .btn-primary:hover {
+            background-color: #677bc4; /* Discord primary button hover color */
+            border-color: #677bc4; /* Discord primary button hover border color */
+        }
+
+        .btn-link {
+            color: #7289da; /* Discord link color */
+        }
+
+        .btn-link:hover {
+            color: #677bc4; /* Discord link hover color */
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h4 class="card-title mb-4">Form Submitted Successfully!</h4>
+                        <p class="card-text">Thank you for submitting the form. Rent Agreement has been Generated!</p>
+                        <button class="btn btn-primary mt-3">View PDF</button>
+                        <button class="btn btn-primary mt-3" id="goBackButton">Go Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // JavaScript to navigate back to the previous page
+        document.getElementById("goBackButton").addEventListener("click", function() {
+            window.location.replace(document.referrer="http://127.0.0.1:5500/rent_handler/templates/add.html")
+        
+        })
+    </script>
+</body>
+</html>
